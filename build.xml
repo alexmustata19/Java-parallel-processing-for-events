@@ -1,0 +1,24 @@
+<project name="Tema2" basedir=".">
+   <target name="init">
+      <property name="srcDir" value="src"/>
+      <property name="clsDir" value="classes" />
+      <property name="jarDir" value="eventqueue.jar" />
+   </target>
+   <target name="clean" depends="init">
+      <deltree dir="${clsDir}" />
+      <deltree dir="${jarDir}" />
+   </target>
+   <target name="prepare" depends="clean">
+      <mkdir dir="${clsDir}" />
+   </target>
+   <target name="compile" depends="prepare">
+     <javac srcdir="${srcDir}" destdir="${clsDir}" />
+   </target>
+   <target name="jar" depends="compile">
+     <jar destfile="${jarDir}" basedir="${clsDir}" >
+     	<manifest>
+        	<attribute name="Main-Class" value="tema2apd.Main"/>
+    	</manifest> 
+	</jar>
+   </target>
+</project>
